@@ -23,6 +23,7 @@ git diff | uv run main.py --model <model_name>
 - `--model`: 使用するモデルを指定します。以下のいずれかを指定できます。
   - `deepseek-chat`
   - `gemini-2.0-flash-exp`
+  - `gpt-4o`
 
 ### 例
 
@@ -38,3 +39,4 @@ git diff | uv run main.py --model deepseek-chat
 
 - `DEEPSEEK_API_KEY`: DeepSeek API のキー
 - `GEMINI_API_KEY`: Gemini API のキー
+- `OPENAI_API_KEY`: OpenAI API のキー
