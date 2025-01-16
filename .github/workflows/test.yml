@@ -20,6 +20,14 @@ jobs:
       - name: Install uv
         run: pip install uv
 
+      - name: Create virtual environment
+        run: uv venv .venv
+
+      - name: Activate virtual environment
+        run: |
+          echo "VIRTUAL_ENV=$PWD/.venv" >> $GITHUB_ENV
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+
       - name: Install dependencies
         run: uv pip install .
 
