@@ -24,6 +24,10 @@ def test_get_api_key_failure():
         get_api_key("NON_EXISTENT_KEY")
 
 # Test deepseek_chat
+@pytest.mark.skipif(
+    not os.getenv("DEEPSEEK_API_KEY"),
+    reason="DEEPSEEK_API_KEY environment variable not set"
+)
 @patch("main.OpenAI")
 def test_deepseek_chat(mock_openai):
     """Deepseek Chat APIのレスポンスが正しく返されることをテスト"""
@@ -39,6 +43,10 @@ def test_deepseek_chat(mock_openai):
     mock_client.chat.completions.create.assert_called_once()
 
 # Test gemini_2_0_flash_exp
+@pytest.mark.skipif(
+    not os.getenv("GEMINI_API_KEY"),
+    reason="GEMINI_API_KEY environment variable not set"
+)
 @patch("main.genai.Client")
 def test_gemini_2_0_flash_exp(mock_genai):
     """Gemini 2.0 Flash APIのレスポンスが正しく返されることをテスト"""
@@ -54,6 +62,10 @@ def test_gemini_2_0_flash_exp(mock_genai):
     mock_client.models.generate_content.assert_called_once()
 
 # Test gpt_4o
+@pytest.mark.skipif(
+    not os.getenv("OPENAI_API_KEY"),
+    reason="OPENAI_API_KEY environment variable not set"
+)
 @patch("main.OpenAI")
 def test_gpt_4o(mock_openai):
     """GPT-4o APIのレスポンスが正しく返されることをテスト"""
